@@ -1,4 +1,5 @@
 import subprocess
+import os
 def run_command(command):
     try:
         result = subprocess.run(command, shell=True, check=True)
@@ -36,4 +37,4 @@ def custom_user_run(program):
     program = program_path + program
     users = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3']
     for user in users:
-        run_command(f"sudo -u {user} python3 {program}")
+        os.system(f"sudo {user} python3 {program}")

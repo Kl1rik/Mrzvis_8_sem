@@ -73,8 +73,8 @@ def crud_txt_file():
 
 
 def custom_user_run(program):
-    program_path = parse_output(subprocess.check_output('pwd'))
-    program = program_path + program
+    program_path = parse_output(subprocess.check_output("pwd"))
+    program_full_path = program_path + program
     users = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3','root']
     for user in users:
         os.system(f"sudo -u {user} python3 {program}")

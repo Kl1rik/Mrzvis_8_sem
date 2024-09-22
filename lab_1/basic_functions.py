@@ -27,7 +27,7 @@ def crud_txt_file():
     files_path_all = f"/home/{user}/pzs/pzs14"
     files_path_root = f"/home/{user}/pzs/pzs15"
 
-    folder_list = files_path_user + files_path_group + files_path_others + files_path_all + files_path_root
+    folder_list = [files_path_user ,files_path_group , files_path_others , files_path_all , files_path_root]
 
     files_path_group = files_path_user
     files_path_others =files_path_user

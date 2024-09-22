@@ -35,4 +35,4 @@ def custom_user_run(program):
 
     users = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3']
     for user in users:
-        run_command(f" sudo -u {user} python {program}")
+        run_command(f" sudo -u {user} python3 {program}")

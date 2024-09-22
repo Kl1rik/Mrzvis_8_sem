@@ -37,4 +37,4 @@ def custom_user_run(program):
     program = program_path + program
     users = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3']
     for user in users:
-        os.system(f"sudo {user} python3 {program}")
+        os.system(f"sudo -u {user} python3 {program}")

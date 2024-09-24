@@ -120,7 +120,7 @@ def custom_user_run(program):
     
 
     for file in files_execute_list:
-        pid = run_file_as_user(file,user)
+        pid = run_file_as_user(file,users[0])
         if pid:
             count = -1
             while count < len(users):

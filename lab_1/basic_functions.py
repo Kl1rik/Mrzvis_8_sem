@@ -59,9 +59,9 @@ def stop_process(pid, user):
     try:
         result = subprocess.run(['sudo', '-u', user, 'kill', '-0', str(pid)], capture_output=True)
         if result.returncode == 0:
-            print(f"Пользователь {user} может остановить процесс с PID {pid}.")
+            print(Fore.LIGHTGREEN_EX + f"Пользователь {user} может остановить процесс с PID {pid}.")
         else:
-            print(f"Пользователь {user} не может остановить процесс с PID {pid}.")
+            print(Fore.RED + f"Пользователь {user} не может остановить процесс с PID {pid}.")
     except Exception as e:
         print(f"Ошибка при проверке возможности остановки процесса с PID {pid} пользователем {user}: {e}")
 

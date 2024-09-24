@@ -23,7 +23,7 @@ files_all = [f'{files_path_all}/file41',f'{files_path_all}/file42',f'{files_path
 files_root = [f'{files_path_root}/file51',f'{files_path_root}/file52',f'{files_path_root}/file53',f'{files_path_root}/file54',f'{files_path_root}/file55']
 
 files_test_variable_list = files_user + files_group + files_others + files_all
-files_execute_list = files_user[-1] + files_group[-1] + files_others[-1] + files_all[-1] + files_root[-1]
+files_execute_list = [files_user[-1] ,files_group[-1] ,files_others[-1] ,files_all[-1] ,files_root[-1]]
 
 def run_command(command):
     try:
@@ -108,7 +108,6 @@ def crud_txt_file():
 
 
 def custom_user_run(program):
-    user = "iit11"
 
     program_path = parse_output(subprocess.check_output("pwd"))
     program_full_path = program_path + program
@@ -124,7 +123,7 @@ def custom_user_run(program):
         pid = run_file_as_user(file,user)
         if pid:
             count = -1
-            while count < (len(users)):
+            while count < len(users):
                 stop_process(pid,user[count])
                 count +=1
 

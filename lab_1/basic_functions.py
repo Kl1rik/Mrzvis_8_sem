@@ -63,7 +63,7 @@ def crud_txt_file():
         print(f"Проверка папки {folder}")
         file = "test_dir"
         print(f"Создание файла {file}")
-        run_command(f"sudo touch {file}")
+        run_command(f"touch {file}")
 
         print(f"Редактирование файла {file}")
         run_command(f"ls >> {file}")

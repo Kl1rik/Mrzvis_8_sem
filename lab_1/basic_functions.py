@@ -3,7 +3,7 @@ import os
 from colorama import Fore,Back,Style
 def run_command(command):
     try:
-        result = subprocess.run(command, shell=True, check=True ,stdout=subprocess.DEVNULL)
+        result = subprocess.run(command, shell=True, check=True ,stdout=subprocess.DEVNULL ,stderr=subprocess.DEVNULL)
         return result
     except subprocess.CalledProcessError as e:
         if "useradd" in command:

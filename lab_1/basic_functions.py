@@ -119,11 +119,12 @@ def custom_user_run(program):
 
     print(Fore.LIGHTYELLOW_EX + "Запуск файлов *5")
     
+
     for file in files_execute_list:
         pid = run_file_as_user(file,user)
         if pid:
-            count = 0
-            while count != len(users) - 1:
+            count = -1
+            while count < (len(users)):
                 stop_process(pid,user[count])
                 count +=1
 

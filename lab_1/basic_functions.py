@@ -1,5 +1,6 @@
 import subprocess
 import os
+from colorama import Fore,Back,Style
 def run_command(command):
     try:
         result = subprocess.run(command, shell=True, check=True)
@@ -46,7 +47,7 @@ def crud_txt_file():
 
 
         
-    print("Начало проверки файлов")
+    print(Fore.WHITE + "Начало проверки файлов")
     for file in files_test_variable_list:
         print(f"Исполнение файла {file}")
         run_command(f"sudo sh {file}")
@@ -60,7 +61,7 @@ def crud_txt_file():
     print("Начало проверки директорий")
     
     for folder in folder_list:
-        print(f"Проверка папки {folder}")
+        print(Fore.MAGENTA + f"Проверка папки {folder}")
         file = f"{folder}/test_dir"
         print(f"Создание файла {file}")
         run_command(f"touch {file}")
@@ -78,4 +79,5 @@ def custom_user_run(program):
     program_full_path = program_path + program
     users = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3','root']
     for user in users:
+        print(Fore.YELLOW +"Проверка пользователя {user}")
         os.system(f"sudo -u {user} python3 {program_full_path}")

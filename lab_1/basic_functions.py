@@ -58,6 +58,8 @@ def crud_txt_file():
         print("Да" if read else "Нет")
 
         # print(Fore.WHITE + f"Редактирование файла {file}")
+        write_dir = os.access(file, os.W_OK)
+        print("Да" if write else "Нет")
 
         # print(Fore.WHITE + f"Удаление файла {file}")
         execute = os.access(file, os.X_OK)

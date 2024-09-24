@@ -52,15 +52,14 @@ def crud_txt_file():
     print(Fore.RED + "Начало проверки файлов")
 
     for file in files_test_variable_list:
-        print(Fore.WHITE + f"Исполнение файла {file}")
+        print(Fore.WHITE + f"Файл {file}(Исполнение/Редактирование/Удаление)")
+        # print(Fore.WHITE + f"Исполнение файла {file}")
         read = os.access(file, os.R_OK)
         print("Да" if read else "Нет")
 
-        print(Fore.WHITE + f"Редактирование файла {file}")
-        write = os.access(file, os.W_OK)
-        print("Да" if write else "Нет")
+        # print(Fore.WHITE + f"Редактирование файла {file}")
 
-        print(Fore.WHITE + f"Удаление файла {file}")
+        # print(Fore.WHITE + f"Удаление файла {file}")
         execute = os.access(file, os.X_OK)
         print("Да" if execute else "Нет")
         
@@ -69,17 +68,22 @@ def crud_txt_file():
     print(Fore.MAGENTA + "Начало проверки директорий")
     
     for folder in folder_list:
-        print(Fore.LIGHTCYAN_EXc + f"Проверка папки {folder}")
+        print(Fore.LIGHTCYAN_EX + f"Проверка папки {folder}")
 
         file = f"{folder}/test_dir"
         print(Fore.WHITE + f"Создание файла {file}")
         run_command(f"touch {file}")
+        
 
         print(Fore.WHITE + f"Редактирование файла {file}")
-        run_command(f"ls >> {file}")
+        # run_command(f"ls >> {file}")
+        write_dir = os.access(file, os.W_OK)
+        print("Да" if write_dir else "Нет")
 
         print(Fore.WHITE + f"Удаление файла {file}")
-        run_command(f"rm {file}")
+        # run_command(f"rm {file}")
+        execute_dir = os.access(file, os.X_OK)
+        print("Да" if execute_dir else "Нет")
 
 
 

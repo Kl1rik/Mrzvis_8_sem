@@ -47,7 +47,8 @@ def crud_txt_file():
 
 
         
-    print(Fore.GREEN + "Начало проверки файлов")
+    print("Начало проверки файлов")
+    
     for file in files_test_variable_list:
         print(f"Исполнение файла {file}")
         run_command(f"sudo sh {file}")

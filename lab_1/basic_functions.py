@@ -47,7 +47,7 @@ def crud_txt_file():
 
 
         
-    print(Fore.WHITE + "Начало проверки файлов")
+    print(Fore.GREEN + "Начало проверки файлов")
     for file in files_test_variable_list:
         print(f"Исполнение файла {file}")
         run_command(f"sudo sh {file}")
@@ -58,10 +58,11 @@ def crud_txt_file():
         print(f"Удаление файла {file}")
         run_command(f"rm {file}")
 
-    print("Начало проверки директорий")
+    print(Fore.MAGENTA + "Начало проверки директорий")
     
     for folder in folder_list:
-        print(Fore.MAGENTA + f"Проверка папки {folder}")
+        print(f"Проверка папки {folder}")
+
         file = f"{folder}/test_dir"
         print(f"Создание файла {file}")
         run_command(f"touch {file}")

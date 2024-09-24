@@ -61,7 +61,7 @@ def stop_process(pid, user):
         if result.returncode == 0:
             print(Fore.LIGHTGREEN_EX + f"Пользователь {user} может остановить процесс с PID {pid}.")
         else:
-            print(Fore.RED + f"Пользователь {user} не может остановить процесс с PID {pid}.")
+            print(Fore.WHITE + f"Пользователь {user} не может остановить процесс с PID {pid}.")
     except Exception as e:
         print(f"Ошибка при проверке возможности остановки процесса с PID {pid} пользователем {user}: {e}")
 

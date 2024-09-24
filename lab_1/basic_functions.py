@@ -113,6 +113,7 @@ def crud_txt_file():
 
 
 def custom_user_run(program):
+    user = "iit11"
     files_path_user = f"/home/{user}/pzs/pzs11"
     files_path_group = f"/home/{user}/pzs/pzs12"
     files_path_others = f"/home/{user}/pzs/pzs13"

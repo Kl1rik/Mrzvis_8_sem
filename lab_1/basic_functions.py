@@ -22,8 +22,28 @@ def parse_output(byte_string):
     cleaned_string = decoded_string.strip()
     return cleaned_string
 
+def run_file_as_user(file_path, user):
+    try:
+        process = subprocess.Popen(['sudo', '-u', user, 'sh', file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        print(f"Файл {file_path} запущен пользователем {user}. PID: {process.pid}")
+        return process.pid
+    except Exception as e:
+        print(f"Ошибка при запуске файла {file_path} пользователем {user}: {e}")
+        return None
+    
+def stop_process(pid, user):
+    try:
+        result = subprocess.run(['sudo', '-u', user, 'kill', '-0', str(pid)], capture_output=True)
+        if result.returncode == 0:
+            print(f"Пользователь {user} может остановить процесс с PID {pid}.")
+        else:
+            print(f"Пользователь {user} не может остановить процесс с PID {pid}.")
+    except Exception as e:
+        print(f"Ошибка при проверке возможности остановки процесса с PID {pid} пользователем {user}: {e}")
+
 def crud_txt_file():
     user = "iit11"
+    user_list = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3','root']
     # parse_output(subprocess.check_output("whoami"))
     files_path_user = f"/home/{user}/pzs/pzs11"
     files_path_group = f"/home/{user}/pzs/pzs12"
@@ -46,6 +66,7 @@ def crud_txt_file():
     files_root = [f'{files_path_root}/file51',f'{files_path_root}/file52',f'{files_path_root}/file53',f'{files_path_root}/file54',f'{files_path_root}/file55']
     
     files_test_variable_list = files_user + files_group + files_others + files_all
+    files_execute_list = files_user[-1] + files_group[-1] + files_others[-1] + files_all[-1] + files_root[-1]
 
 
         
@@ -65,7 +86,14 @@ def crud_txt_file():
         execute = os.access(file, os.X_OK)
         print("Да" if execute else "Нет")
         
-       
+    print(Fore.LIGHTYELLOW_EX + "Запуск файлов *5")
+    for file in files_execute_list:
+        pid = run_file_as_user(file,user)
+        if pid:
+            for user in user_list:
+                stop_process(pid,user)
+                
+
 
     print(Fore.MAGENTA + "Начало проверки директорий")
     
@@ -96,3 +124,4 @@ def custom_user_run(program):
     for user in users:
         print(Fore.YELLOW + f"Проверка пользователя {user}")
         os.system(f"sudo -u {user} python3 {program_full_path}")
+

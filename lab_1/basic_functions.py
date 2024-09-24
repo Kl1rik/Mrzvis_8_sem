@@ -135,7 +135,7 @@ def custom_user_run(program):
     
     files_test_variable_list = files_user + files_group + files_others + files_all
     files_execute_list = files_user[-1] + files_group[-1] + files_others[-1] + files_all[-1] + files_root[-1]
-    
+
     program_path = parse_output(subprocess.check_output("pwd"))
     program_full_path = program_path + program
     users = ['iit11', 'iit12', 'iit21', 'iit22', 'iit3','root']
@@ -144,9 +144,12 @@ def custom_user_run(program):
         os.system(f"sudo -u {user} python3 {program_full_path}")
 
     print(Fore.LIGHTYELLOW_EX + "Запуск файлов *5")
+    
     for file in files_execute_list:
         pid = run_file_as_user(file,user)
         if pid:
-            for user in users:
-                stop_process(pid,user)
+            count = 0
+            while count != len(users) - 1:
+                stop_process(pid,user[count])
+                count +=1
 

@@ -124,6 +124,6 @@ def custom_user_run(program):
         if pid:
             count = -1
             while count < len(users):
-                stop_process(pid,user[count])
+                stop_process(pid,users[count])
                 count +=1
 

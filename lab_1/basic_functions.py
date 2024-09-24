@@ -3,7 +3,7 @@ import os
 from colorama import Fore,Back,Style
 def run_command(command):
     try:
-        result = subprocess.run(command, shell=True, check=True)
+        result = subprocess.run(command, shell=True, check=True ,stdout=subprocess.DEVNULL)
         return result
     except subprocess.CalledProcessError as e:
         if "useradd" in command:
@@ -14,6 +14,8 @@ def run_command(command):
             print(f"Нет доступа для редактирования :{e}")
         elif "rm" in command:
             print(f"Нет доступа для редактирования :{e}")
+        elif "sh" in command:
+            print(f"Нет доступа для исполнения файла :{e}")
 
 def parse_output(byte_string):
     decoded_string = byte_string.decode('utf-8')

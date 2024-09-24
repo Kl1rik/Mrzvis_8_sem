@@ -47,31 +47,31 @@ def crud_txt_file():
 
 
         
-    print("Начало проверки файлов")
-    
+    print(Fore.RED + "Начало проверки файлов")
+
     for file in files_test_variable_list:
-        print(f"Исполнение файла {file}")
+        print(Fore.WHITE + f"Исполнение файла {file}")
         run_command(f"sudo sh {file}")
 
-        print(f"Редактирование файла {file}")
+        print(Fore.WHITE + f"Редактирование файла {file}")
         run_command(f"ls >> {file}")
 
-        print(f"Удаление файла {file}")
+        print(Fore.WHITE + f"Удаление файла {file}")
         run_command(f"rm {file}")
 
     print(Fore.MAGENTA + "Начало проверки директорий")
     
     for folder in folder_list:
-        print(f"Проверка папки {folder}")
+        print(Fore.WHITE + f"Проверка папки {folder}")
 
         file = f"{folder}/test_dir"
-        print(f"Создание файла {file}")
+        print(Fore.WHITE + f"Создание файла {file}")
         run_command(f"touch {file}")
 
-        print(f"Редактирование файла {file}")
+        print(Fore.WHITE + f"Редактирование файла {file}")
         run_command(f"ls >> {file}")
 
-        print(f"Удаление файла {file}")
+        print(Fore.WHITE + f"Удаление файла {file}")
         run_command(f"rm {file}")
 
 

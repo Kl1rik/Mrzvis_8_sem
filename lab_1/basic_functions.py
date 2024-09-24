@@ -122,8 +122,8 @@ def custom_user_run(program):
     for file in files_execute_list:
         pid = run_file_as_user(file,users[0])
         if pid:
-            count = -1
-            while count < len(users):
+            count = 0
+            while count < len(users) -1:
                 stop_process(pid,users[count])
                 count +=1
 

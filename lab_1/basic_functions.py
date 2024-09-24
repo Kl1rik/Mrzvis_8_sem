@@ -25,10 +25,10 @@ def parse_output(byte_string):
 def run_file_as_user(file_path, user):
     try:
         process = subprocess.Popen(['sudo', '-u', user, 'sh', file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(f"Файл {file_path} запущен пользователем {user}. PID: {process.pid}")
+        print(Fore.WHITE + f"Файл {file_path} запущен пользователем {user}. PID: {process.pid}")
         return process.pid
     except Exception as e:
-        print(f"Ошибка при запуске файла {file_path} пользователем {user}: {e}")
+        print(Fore.WHITE + f"Ошибка при запуске файла {file_path} пользователем {user}: {e}")
         return None
     
 def stop_process(pid, user):

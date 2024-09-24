@@ -1,7 +1,8 @@
 import subprocess
 import os
-from basic_functions import parse_output,run_command
+from basic_functions import parse_output,run_command,custom_user_run
 from delete_acl import clear_lab_enviroment
+
 
 
 def create_users():
@@ -99,12 +100,31 @@ def add_files_and_set_permissions(user):
         run_command(f"sudo chmod {permissions['root'][perm]} {files_root[perm]}")
 
 def main():
-    user = parse_output(subprocess.check_output('whoami'))
-    create_users()
-    create_groups()
-    add_users_to_groups()
-    create_folders(user)
-    add_files_and_set_permissions(user)
+    menu_text = """
+Выберите вариант из списка:
+1.Пункты 1-13(создание структуры,групп и пользователей)
+2.Пункты 14-16(тестирование доступа к файлам и папкам)
+3.Пункт 17(удаление файловой структуры,групп и пользователей)
+
+
+"""
+    print(menu_text)
+    user_input = int(input())
+    match user_input:
+        case 1:
+            user = parse_output(subprocess.check_output('whoami'))
+            create_users()
+            create_groups()
+            add_users_to_groups()
+            create_folders(user)
+            add_files_and_set_permissions(user)
+        case 2:
+            program = "/test_run.py"
+            custom_user_run(program)
+        case 3:
+            clear_lab_enviroment()
+
+
 
 if __name__ == "__main__":
     main()

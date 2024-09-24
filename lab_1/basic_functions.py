@@ -61,7 +61,7 @@ def crud_txt_file():
     
     for folder in folder_list:
         print(f"Проверка папки {folder}")
-        file = "test_dir"
+        file = f"{folder}/test_dir"
         print(f"Создание файла {file}")
         run_command(f"touch {file}")
 

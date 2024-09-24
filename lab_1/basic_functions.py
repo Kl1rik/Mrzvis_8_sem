@@ -20,7 +20,8 @@ def parse_output(byte_string):
     return cleaned_string
 
 def crud_txt_file():
-    user = parse_output(subprocess.check_output("whoami"))
+    user = "iit11"
+    # parse_output(subprocess.check_output("whoami"))
     files_path_user = f"/home/{user}/pzs/pzs11"
     files_path_group = f"/home/{user}/pzs/pzs12"
     files_path_others = f"/home/{user}/pzs/pzs13"
